@@ -20,8 +20,8 @@ public class LoginPage extends BasePage {
     WebElement inputPassword;
     @FindBy(xpath = "//button[@type='submit']")
     WebElement btnYalla;
-    @FindBy(xpath = "//h2[@class='message']")
-    WebElement popUpMessage;
+//    @FindBy(xpath = "//h2[@class='message']")
+//    WebElement popUpMessage;
     @FindBy(xpath = "//div[@class='error']")
     WebElement errorMessage;
 

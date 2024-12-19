@@ -9,11 +9,13 @@ import org.testng.annotations.Test;
 import pages.LetCarWorkPage;
 import pages.LoginPage;
 import pages.SearchPage;
+import utils.Fuel;
 
 import java.util.Random;
 
 public class AddNewCarTests extends ApplicationManager {
     LoginPage loginPage;
+    LetCarWorkPage letCarWorkPage;
 
     @BeforeMethod
     public void login() {
@@ -41,13 +43,17 @@ public class AddNewCarTests extends ApplicationManager {
                 .manufacture("Mazda")
                 .model("CX-90")
                 .year("2022")
-                .fuel("Diesel")
+                .fuel(Fuel.HYBRID.getLocator())
                 .seats(4)
                 .carClass("A")
                 .pricePerDay(123.99)
                 .about("About my car")
                 .build();
-        new LetCarWorkPage(getDriver()).typeLetCarWorkForm(car);
+        letCarWorkPage = new LetCarWorkPage(getDriver());
+        letCarWorkPage.typeLetCarWorkForm(car);
+        Assert.assertTrue(letCarWorkPage
+                .isPopUpMessagePresent(car.getManufacture() + " " + car.getModel() + " " + "added successful"));
+
     }
 
 }

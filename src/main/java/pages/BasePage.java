@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -10,6 +11,8 @@ public class BasePage {
     public static void setDriver(WebDriver wd){
         driver = wd;
     }
+    @FindBy(xpath = "//h2[@class='message']")
+    WebElement popUpMessage;
 
     public void pause(int time){
         try {
@@ -25,6 +28,10 @@ public class BasePage {
 
     public void clickWait(WebElement element, int time){
         new WebDriverWait(driver,time).until(ExpectedConditions.elementToBeClickable(element)).click();
+    }
+
+    public boolean validateUrl(String url, int time){
+        return new WebDriverWait(driver, time).until(ExpectedConditions.urlContains(url));
     }
 
 
