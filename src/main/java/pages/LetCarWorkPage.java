@@ -43,6 +43,8 @@ public class LetCarWorkPage extends BasePage {
 //    @FindBy(xpath = "//h2[@class='message']")
 //    WebElement popUpMessage;
 
+    //Haifa Ford  Focus   Haifa Mazda  Focus
+    //TelAviv Mazda CX-5
     public void typeLetCarWorkForm(CarDto car) {
         inputLocation.sendKeys(car.getCity());
         clickWait(locationSubmit, 5);
