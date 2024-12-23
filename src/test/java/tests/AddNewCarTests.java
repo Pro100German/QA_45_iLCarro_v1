@@ -41,7 +41,7 @@ public class AddNewCarTests extends ApplicationManager {
                 .serialNumber(new Random().nextInt(1000) + "-055")
                 .city("Haifa")
                 .manufacture("Mazda")
-                .model("CX-90")
+                .model("qwerty")
                 .year("2022")
                 .fuel(Fuel.HYBRID.getLocator())
                 .seats(4)
