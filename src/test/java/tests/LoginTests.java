@@ -20,8 +20,8 @@ public class LoginTests extends ApplicationManager {
     @Test
     public void loginPositiveTest(){
         UserDtoLombok user = UserDtoLombok.builder()
-                .email("alexmed123@gmail.com")
-                .password("Qwerty123!")
+                .email("myphone@gmail.com")
+                .password("German1234!")
                 .build();
         loginPage = new LoginPage(getDriver());
         loginPage.typeLoginForm(user);
