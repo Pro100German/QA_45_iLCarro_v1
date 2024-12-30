@@ -1,5 +1,6 @@
 package tests;
 
+import data_provider.DPCar;
 import dto.CarDto;
 import dto.UserDtoLombok;
 import manager.ApplicationManager;
@@ -35,6 +36,10 @@ public class AddNewCarTests extends ApplicationManager {
         } else
             System.out.println("Something went wrong");
     }
+    @Test(dataProvider = "newAddCarDP", dataProviderClass = DPCar.class)
+    public void addNewDPCarPositiveTest(CarDto car){
+        letCarWorkPage.typeLetCarWorkForm(car);
+    }
 
     @Test(retryAnalyzer = RetryAnalyzer.class)
     public void addNewCarPositiveTest() {
@@ -45,9 +50,9 @@ public class AddNewCarTests extends ApplicationManager {
                 .model("qwerty")
                 .year("2022")
                 .fuel(Fuel.HYBRID.getLocator())
-                .seats(4)
+                .seats("4")
                 .carClass("A")
-                .pricePerDay(123.99)
+                .pricePerDay("123.99")
                 .about("About my car")
                 .build();
         letCarWorkPage = new LetCarWorkPage(getDriver());
@@ -65,9 +70,9 @@ public class AddNewCarTests extends ApplicationManager {
                 .model("qwerty")
                 .year("2022")
                 .fuel(Fuel.HYBRID.getLocator())
-                .seats(4)
+                .seats("4")
                 .carClass("A")
-                .pricePerDay(123.99)
+                .pricePerDay("123.99")
                 .about("About my car")
                 .build();
         letCarWorkPage = new LetCarWorkPage(getDriver());
@@ -79,15 +84,15 @@ public class AddNewCarTests extends ApplicationManager {
     @Test(retryAnalyzer = RetryAnalyzer.class)
     public void addNewCarNegativeTestWrong() {
         CarDto car = CarDto.builder()
-                .serialNumber("")
+                .serialNumber("466")
                 .city("Haifa")
                 .manufacture("Mazda")
                 .model("6")
                 .year("2022")
                 .fuel(Fuel.HYBRID.getLocator())
-                .seats(4)
+                .seats("4")
                 .carClass("A")
-                .pricePerDay(123.99)
+                .pricePerDay("123.99")
                 .about("About my car")
                 .build();
         letCarWorkPage = new LetCarWorkPage(getDriver());
