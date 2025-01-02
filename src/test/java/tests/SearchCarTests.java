@@ -2,10 +2,14 @@ package tests;
 
 import manager.ApplicationManager;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.LetCarWorkPage;
 import pages.ResultsPage;
 import pages.SearchPage;
+import utils.TestNGListener;
+
+@Listeners(TestNGListener.class)
 
 public class SearchCarTests extends ApplicationManager {
     SearchPage searchPage;

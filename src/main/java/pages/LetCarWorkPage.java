@@ -59,7 +59,7 @@ public class LetCarWorkPage extends BasePage {
         inputSeats.sendKeys(car.getSeats() + "");
         inputClass.sendKeys(car.getCarClass());
         inputSerialNumber.sendKeys(car.getSerialNumber());
-        inputPrice.sendKeys(car.getPricePerDay());
+        inputPrice.sendKeys(Double.toString(car.getPricePerDay()));
         inputAbout.sendKeys(car.getAbout());
         clickWait(btnSubmit, 5);
     }

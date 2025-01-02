@@ -16,9 +16,9 @@ public class CarDto {
     String model;
     String year;
     String fuel;
-    String seats;
+    int seats;
     String carClass;
-    String pricePerDay;
+    double pricePerDay;
     String about;
     String  city;
     String image;

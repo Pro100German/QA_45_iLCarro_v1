@@ -6,14 +6,19 @@ import dto.UserDtoLombok;
 import manager.ApplicationManager;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.LetCarWorkPage;
 import pages.LoginPage;
 import pages.SearchPage;
 import utils.Fuel;
 import utils.RetryAnalyzer;
+import utils.TestNGListener;
 
+import java.lang.reflect.Method;
 import java.util.Random;
+
+@Listeners(TestNGListener.class)
 
 public class AddNewCarTests extends ApplicationManager {
     LoginPage loginPage;
@@ -36,9 +41,16 @@ public class AddNewCarTests extends ApplicationManager {
         } else
             System.out.println("Something went wrong");
     }
-    @Test(dataProvider = "newAddCarDP", dataProviderClass = DPCar.class)
-    public void addNewDPCarPositiveTest(CarDto car){
+
+    @Test(dataProvider = "dataProviderCarFile", dataProviderClass = DPCar.class)
+    public void addNewCarPositiveTest(CarDto car, Method method) {
+        logger.info(method.getName()+ "start with data-->" + car.toString());
+
+        letCarWorkPage = new LetCarWorkPage(getDriver());
         letCarWorkPage.typeLetCarWorkForm(car);
+        Assert.assertTrue(letCarWorkPage
+                .isPopUpMessagePresent(car.getManufacture() + " " + car.getModel() + " " + "added successful"));
+
     }
 
     @Test(retryAnalyzer = RetryAnalyzer.class)
@@ -50,9 +62,9 @@ public class AddNewCarTests extends ApplicationManager {
                 .model("qwerty")
                 .year("2022")
                 .fuel(Fuel.HYBRID.getLocator())
-                .seats("4")
+                .seats(4)
                 .carClass("A")
-                .pricePerDay("123.99")
+                .pricePerDay(123.99)
                 .about("About my car")
                 .build();
         letCarWorkPage = new LetCarWorkPage(getDriver());
@@ -70,9 +82,9 @@ public class AddNewCarTests extends ApplicationManager {
                 .model("qwerty")
                 .year("2022")
                 .fuel(Fuel.HYBRID.getLocator())
-                .seats("4")
+                .seats(4)
                 .carClass("A")
-                .pricePerDay("123.99")
+                .pricePerDay(123.99)
                 .about("About my car")
                 .build();
         letCarWorkPage = new LetCarWorkPage(getDriver());
@@ -90,9 +102,9 @@ public class AddNewCarTests extends ApplicationManager {
                 .model("6")
                 .year("2022")
                 .fuel(Fuel.HYBRID.getLocator())
-                .seats("4")
+                .seats(4)
                 .carClass("A")
-                .pricePerDay("123.99")
+                .pricePerDay(123.99)
                 .about("About my car")
                 .build();
         letCarWorkPage = new LetCarWorkPage(getDriver());
