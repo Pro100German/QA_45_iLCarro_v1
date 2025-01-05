@@ -2,8 +2,9 @@ package tests;
 
 import data_provider.DPCar;
 import dto.CarDto;
-import dto.UserDtoLombok;
+import dto.UserDto;
 import manager.ApplicationManager;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -17,6 +18,8 @@ import utils.TestNGListener;
 
 import java.lang.reflect.Method;
 import java.util.Random;
+import static utils.PropertiesReader.*;
+import static utils.TakeScreenShot.*;
 
 @Listeners(TestNGListener.class)
 
@@ -26,13 +29,16 @@ public class AddNewCarTests extends ApplicationManager {
 
     @BeforeMethod
     public void login() {
-        UserDtoLombok user = UserDtoLombok.builder()
-                .email("myphone@gmail.com")
-                .password("German1234!")
-                .build();
+        UserDto user = new UserDto(getProperty("ligin.properties","email"),
+                getProperty("ligin.properties","password"));
+
+//        UserDtoLombok user = UserDtoLombok.builder()
+//                .email("myphone@gmail.com")
+//                .password("German1234!")
+//                .build();
         new SearchPage(getDriver()).clickBtnLogin();
         loginPage = new LoginPage(getDriver());
-        loginPage.typeLoginForm(user);
+        loginPage.typeLoginFormrFromProper(user);
         loginPage.clickBtnYalla();
         if (loginPage.isPopUpLoginMessagePresent("Logged in success")) {
             System.out.println("login success");
@@ -48,6 +54,7 @@ public class AddNewCarTests extends ApplicationManager {
 
         letCarWorkPage = new LetCarWorkPage(getDriver());
         letCarWorkPage.typeLetCarWorkForm(car);
+        takeScreenShot((TakesScreenshot) getDriver());
         Assert.assertTrue(letCarWorkPage
                 .isPopUpMessagePresent(car.getManufacture() + " " + car.getModel() + " " + "added successful"));
 
@@ -89,6 +96,7 @@ public class AddNewCarTests extends ApplicationManager {
                 .build();
         letCarWorkPage = new LetCarWorkPage(getDriver());
         letCarWorkPage.typeLetCarWorkForm(car);
+        takeScreenShot((TakesScreenshot) getDriver());
         Assert.assertTrue(letCarWorkPage.isElementPresentDOM("//*[text()=' Make is required ']",5));
 
 
