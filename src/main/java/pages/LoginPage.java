@@ -2,7 +2,6 @@ package pages;
 
 import dto.UserDto;
 import dto.UserDtoLombok;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -44,7 +43,7 @@ public class LoginPage extends BasePage {
 
 
     public void typeLoginForm(UserDtoLombok user) {
-        inputEmail.sendKeys(user.getEmail());
+        inputEmail.sendKeys(user.getUsername());
         inputPassword.sendKeys(user.getPassword());
     }
     public void typeLoginFormrFromProper(UserDto user) {

@@ -60,7 +60,7 @@ public class AddNewCarTests extends ApplicationManager {
 
     }
 
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test//(retryAnalyzer = RetryAnalyzer.class)
     public void addNewCarPositiveTest() {
         CarDto car = CarDto.builder()
                 .serialNumber(new Random().nextInt(1000) + "-055")
@@ -80,7 +80,7 @@ public class AddNewCarTests extends ApplicationManager {
                 .isPopUpMessagePresent(car.getManufacture() + " " + car.getModel() + " " + "added successful"));
 
     }
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test//(retryAnalyzer = RetryAnalyzer.class)
     public void addNewCarNegativeTestWrongMake() {
         CarDto car = CarDto.builder()
                 .serialNumber(new Random().nextInt(1000) + "-055")
@@ -101,7 +101,7 @@ public class AddNewCarTests extends ApplicationManager {
 
 
     }
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test//(retryAnalyzer = RetryAnalyzer.class)
     public void addNewCarNegativeTestWrong() {
         CarDto car = CarDto.builder()
                 .serialNumber("466")
