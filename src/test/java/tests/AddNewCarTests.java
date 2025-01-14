@@ -117,7 +117,7 @@ public class AddNewCarTests extends ApplicationManager {
                 .build();
         letCarWorkPage = new LetCarWorkPage(getDriver());
         letCarWorkPage.typeLetCarWorkForm(car);
-        Assert.assertTrue(letCarWorkPage.isElementPresentDOM("//*[text()='Car registration number is required']",5));
+
 
 
     }

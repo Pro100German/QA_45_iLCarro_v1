@@ -83,7 +83,7 @@ public class RegistrationTests extends ApplicationManager {
         registrationPage.typeRegistrationForm(user);
         registrationPage.clickCheckBox();
         registrationPage.clickBtnYalla();
-        Assert.assertTrue(registrationPage.isPopUpMessagePresent("must not be blank"));
+        Assert.assertTrue(registrationPage.isPopUpMessagePresent("lastName\":\"не должно быть пустым"));
     }
     @Test
     public void registrationNegativeTest_WOcheckBox(){

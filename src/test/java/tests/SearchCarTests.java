@@ -14,7 +14,7 @@ import utils.TestNGListener;
 public class SearchCarTests extends ApplicationManager {
     SearchPage searchPage;
 
-    @Test
+    @Test()
     public void searchCarPositiveTest(){
         searchPage = new SearchPage(getDriver());
         searchPage.fillSearchCarFormWOCalendar("Haifa", "12/25/2024", "12/27/2024");

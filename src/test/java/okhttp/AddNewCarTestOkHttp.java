@@ -20,7 +20,7 @@ public class AddNewCarTestOkHttp implements BaseApi {
     TokenDto tokenDto;
     SoftAssert softAssert = new SoftAssert();
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void login() {
         UserDtoLombok user = UserDtoLombok.builder()
                 .username("myphone@gmail.com")

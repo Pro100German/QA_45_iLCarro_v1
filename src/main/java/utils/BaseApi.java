@@ -13,6 +13,8 @@ public interface BaseApi {
 
     String ADD_NEW_CAR = "/v1/cars";
 
+    String GET_USER_CARS = "/v1/cars/my";
+
     Gson GSON = new Gson();
 
     MediaType JSON = MediaType.get("application/json");

@@ -16,7 +16,7 @@ public class LoginTests extends ApplicationManager {
 
     LoginPage loginPage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void goToLoginPage(){
         new SearchPage(getDriver()).clickBtnLogin();
     }
